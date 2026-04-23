@@ -411,6 +411,12 @@ p {
     font-size: 1.05rem;
 }
 
+.section-text-centered {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 /* SERVICE CARDS */
 .service-grid {
     display: grid;
