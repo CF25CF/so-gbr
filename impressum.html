@@ -120,22 +120,32 @@
         // Footer year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Mobile menu toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.getElementById('nav-menu');
-        navToggle.addEventListener('click', () => {
-            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', String(!expanded));
-            navLinks.classList.toggle('is-open');
-            navToggle.classList.toggle('is-open');
-        });
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('is-open');
-                navToggle.classList.remove('is-open');
-                navToggle.setAttribute('aria-expanded', 'false');
-            });
-        });
+        // Hide nav on scroll down, show on scroll up (mobile only)
+        const nav = document.querySelector('.nav');
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function updateNav() {
+            const currentY = window.scrollY;
+            const isMobile = window.innerWidth <= 768;
+
+            if (!isMobile) {
+                nav.classList.remove('nav-hidden');
+            } else if (currentY > lastScrollY && currentY > 80) {
+                nav.classList.add('nav-hidden');
+            } else if (currentY < lastScrollY) {
+                nav.classList.remove('nav-hidden');
+            }
+            lastScrollY = currentY;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateNav);
+                ticking = true;
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>
