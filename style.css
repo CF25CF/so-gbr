@@ -615,37 +615,34 @@ p {
         padding: 0 20px;
     }
     .nav-toggle {
-        display: flex;
+        display: none;
+    }
+    .nav {
+        padding: 14px 0 10px;
+    }
+    .nav-inner {
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
     }
     .nav-links {
-        position: fixed;
-        top: 72px;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        background: var(--color-white);
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 0;
-        padding: 2rem 24px;
-        transform: translateX(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border-top: 1px solid var(--color-border);
-        overflow-y: auto;
-    }
-    .nav-links.is-open {
-        transform: translateX(0);
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.25rem 1.5rem;
+        padding: 0;
+        background: transparent;
+        transform: none;
+        border: none;
+        width: 100%;
     }
     .nav-links li {
-        width: 100%;
-        border-bottom: 1px solid var(--color-border);
+        border: none;
     }
     .nav-links a {
-        display: block;
-        padding: 1.25rem 0;
-        font-size: 1.1rem;
-        width: 100%;
+        font-size: 0.95rem;
+        padding: 4px 0;
     }
 
     .hero {
